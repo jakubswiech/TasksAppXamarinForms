@@ -1,0 +1,14 @@
+{
+  "BaseUri": "http://192.168.0.248:8081/api/",
+  "SignInUri": "users/signIn/",
+  "RegisterUserUri": "users/",
+  "GetUsersUri": "users/",
+  "GetUserUri": "users/{userId}",
+  "CreateTaskUri": "tasks/",
+  "GetTasksUri": "tasks/",
+  "GetTaskUri": "tasks/{taskId}",
+  "ArchiveTaskUri": "tasks/",
+  "UpdateTaskUri": "tasks/",
+  "AssignUserToTaskUri": "tasks/assignUser/",
+  "LogTimeForTaskUri": "tasks/logTime/"
+}

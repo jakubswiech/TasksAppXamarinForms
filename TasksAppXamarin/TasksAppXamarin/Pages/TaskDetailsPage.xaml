@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:TasksAppXamarin.Components;assembly=TasksAppXamarin"
+             mc:Ignorable="d"
+             Title="Details"
+             x:Class="TasksAppXamarin.Pages.TaskDetailsPage"
+             Visual="Material">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BindingContext="{Binding SelectedTask}" VerticalOptions="StartAndExpand">
+                <Label Text="{Binding Name}" FontSize="Title" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                <components:DetailsLabelView LabelText="Name:" ValueText="{Binding Name}"></components:DetailsLabelView>
+                <components:DetailsLabelView LabelText="Content:" ValueText="{Binding Content}"></components:DetailsLabelView>
+                <components:DetailsLabelView BindingContext="{Binding OwnerUser}" LabelText="Created by:" ValueText="{Binding UserName}"></components:DetailsLabelView>
+                <components:DetailsLabelView BindingContext="{Binding AssignedUser}" LabelText="Assigned user:" ValueText="{Binding UserName}"></components:DetailsLabelView>
+                <components:DetailsLabelView LabelText="Created date:" ValueText="{Binding CreatedDate}"></components:DetailsLabelView>
+                <components:DetailsLabelView LabelText="Time spent:" ValueText="{Binding MinutesSpentFormatted}"></components:DetailsLabelView>
+                <Grid Padding="10" VerticalOptions="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label VerticalOptions="Center" Text="Is active:" FontAttributes="Bold" Grid.Column="0" Grid.Row="0"></Label>
+                    <Switch IsEnabled="False" VerticalOptions="Center" HorizontalOptions="Start" IsToggled="{Binding IsActive}" Grid.Column="1" Grid.Row="0"></Switch>
+                </Grid>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="End">
+                <Button IsVisible="{Binding SelectedTask.IsActive}" Text="Edit" BackgroundColor="CornflowerBlue" Command="{Binding GoToUpdatePageCommand }"></Button>
+                <Button IsVisible="{Binding SelectedTask.IsActive}" Text="Assign user" BackgroundColor="LawnGreen" Command="{Binding GoToAssignmentPageCommand }"></Button>
+                <Button Text="Log time" BackgroundColor="Gold" Command="{Binding GoToLogTimePageCommand }"></Button>
+                <Button IsVisible="{Binding SelectedTask.IsActive}" Text="Archive" BackgroundColor="OrangeRed" Command="{Binding ArchiveTaskCommand }"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

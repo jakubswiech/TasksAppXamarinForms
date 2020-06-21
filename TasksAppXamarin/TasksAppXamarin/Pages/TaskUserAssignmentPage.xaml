@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Assign user to task"
+             x:Class="TasksAppXamarin.Pages.TaskUserAssignmentPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Choose user"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding Users}"
+                    ItemDisplayBinding="{Binding UserName}"
+                    SelectedItem="{Binding SelectedUser}"
+                    SelectedIndexChanged="Picker_OnSelectedIndexChanged"></Picker>
+            <Button x:Name="AssignButton" Text="Assign user" IsEnabled="False" BackgroundColor="CornflowerBlue" Command="{Binding AssignUserToTaskCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
